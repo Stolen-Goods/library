@@ -6,28 +6,38 @@ function Book(title, author, pages, haveRead) {
     this.haveRead = haveRead;
 }
 
+
+
 const mistborn = new Book("Mistborn", "Brandon Sanderson", 680, true);
 const dune = new Book("Dune", "Frank Herbert", 820, true);
 const hobbit = new Book("The Hobbit", "JRR Tolkien", 300, true)
 
 const library = [mistborn, dune, hobbit];
 
+const button = document.getElementById("create-button")
+button.addEventListener("click", addBookToLibrary);
+
+const newBook = document.getElementById("dialog-box");
 
 function addBookToLibrary() {
-}
+    newBook.showModal();
 
-// library.forEach(display);
+}
 
 function display() {
     let index = 0;
     for (let i = 0; i < library.length; i++) {
         const shelf = library[index];
         const book = document.createElement("div");
-        book.innerText = `${shelf.title} by ${shelf.author} ${shelf.pages} pages`;
+        book.innerText = `${shelf.title}\n by ${shelf.author}\n ${shelf.pages} pages`;
         document.body.appendChild(book);
         index++;
     }
 }
+
+
+
+
 
 display();
 
