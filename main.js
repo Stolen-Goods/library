@@ -12,7 +12,22 @@ const hobbit = new Book("The Hobbit", "JRR Tolkien", 300, true)
 
 const library = [mistborn, dune, hobbit];
 
-console.log(library);
 
 function addBookToLibrary() {
 }
+
+// library.forEach(display);
+
+function display() {
+    let index = 0;
+    for (let i = 0; i < library.length; i++) {
+        const shelf = library[index];
+        const book = document.createElement("div");
+        book.innerText = `${shelf.title} by ${shelf.author} ${shelf.pages} pages`;
+        document.body.appendChild(book);
+        index++;
+    }
+}
+
+display();
+
