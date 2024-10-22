@@ -4,9 +4,21 @@
     box-sizing: border-box;
 }
 
-body {
+.book-list {
     display: flex;
     gap: 1rem;
+    border: none;
+}
+
+.flex-container {
+    display: flex;
+    border: none;
+    justify-content: center;
+}
+
+#create-button {
+    padding: 3rem;
+    border-radius: 10px;
 }
 
 div {

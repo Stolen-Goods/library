@@ -1,18 +1,13 @@
-let index = 0;
 const addNewBook = document.getElementById("dialog-box");
 
-function CreateBook(title, author, pages, haveRead) {
+function CreateBook(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.haveRead = haveRead;
+    this.read = read;
 }
 
-const mistborn = new CreateBook("Mistborn", "Brandon Sanderson", 680, true);
-const dune = new CreateBook("Dune", "Frank Herbert", 820, true);
-const hobbit = new CreateBook("The Hobbit", "JRR Tolkien", 300, true)
-
-const library = [mistborn, dune, hobbit];
+const library = [];
 
 const addButton = document.getElementById("create-button")
 addButton.addEventListener("click", () => {
@@ -20,19 +15,33 @@ addButton.addEventListener("click", () => {
 });
 
 function libraryDisplay() {
+    const bookList = document.querySelector(".book-list");
+    bookList.innerHTML = '';
     for (let i = 0; i < library.length; i++) {
-        const shelf = library[index];
+        const shelf = library[i];
         const book = document.createElement("div");
-        book.innerText = `${shelf.title}\n by ${shelf.author}\n ${shelf.pages} pages`;
+        book.innerText = `${shelf.title}\n by ${shelf.author}\n ${shelf.pages} pages\n`;
         const removeButton = document.createElement("button");
         removeButton.type = "Button";
         removeButton.innerText = "Remove";
         removeButton.addEventListener("click", () => {
+            library.splice(i, 1);
             book.remove();
         })
+        const readButton = document.createElement("button");
+        readButton.type = "button";
+        readButton.innerText = "Read";
+        readButton.addEventListener("click", () => {
+           if (readButton.innerText === "Read") {
+            readButton.innerText = "Not Read";
+           } else {
+            readButton.innerText = "Read";
+           }
+        })
+        book.append(readButton);
         book.appendChild(removeButton);
-        document.body.appendChild(book);
-        index++;
+        bookList.appendChild(book);
+        console.log(library);
     }
 }
 
