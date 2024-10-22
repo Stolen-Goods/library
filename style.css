@@ -14,3 +14,9 @@ div {
     padding: 4rem;
     border-radius: 10px;
 }
+
+#dialog-box {
+    margin: auto;
+    padding: 2rem;
+    background-color: skyblue;
+}
